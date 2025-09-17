@@ -7,7 +7,7 @@ const crypto = require('crypto');
 async function fetchNewsAPI(query = 'technology') {
   const res = await axios.get('https://newsapi.org/v2/top-headlines', {
     params: {
-    apiKey: Config.NEWS_API_KEY || "4f352c6a7b2247aaa14f5a95f758d8ea",
+    apiKey: Config.NEWS_API_KEY ,
     language: 'en',
     country:'us',
     category:'business'
