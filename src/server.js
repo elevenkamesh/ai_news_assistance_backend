@@ -2,7 +2,8 @@ const express = require("express");
 const cors = require("cors");
 const dotenv = require("dotenv");
 const chatRoutes = require("./chat/chat.router");
-
+const cron = require('node-cron');
+const { loadData } = require('./script/loadData')
 dotenv.config();
 
 const app = express();
@@ -21,4 +22,10 @@ app.get("/", (req, res) => {
 
 app.listen(PORT, () => {
   console.log(`✅ Server listening on port ${PORT}`);
+});
+
+cron.schedule('0 */12 * * *', () => {
+  loadData()
+  console.log('Running this task every 12 hours:', new Date().toLocaleString());
+  
 });
