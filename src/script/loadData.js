@@ -33,7 +33,7 @@ function makeId(article) {
 
 
 
-(async () => {
+const loadData = async () => {
   try {
     const articles = await fetchNewsAPI();
 
@@ -70,4 +70,6 @@ function makeId(article) {
   } catch (err) {
     console.error("❌ Failed to load articles:", err);
   }
-})();
+}
+
+module.exports = { loadData }
